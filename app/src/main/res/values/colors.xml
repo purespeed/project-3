@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name = "faded_red">#FFDE3C50</color>
+    <color name = "warm_grey">#FF9B9B9B</color>
+    <color name = "cornflower_blue_65">#A5468AD9</color>
+    <color name = "light_sage">#FFB8E986</color>
+    <color name = "banana_yellow">#FFF9EC4F</color>
+</resources>
