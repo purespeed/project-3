@@ -10,35 +10,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
-        <ImageView
-            android:contentDescription="@string/description_smiley"
-            android:id="@+id/smiley"
-            android:layout_width="wrap_content"
-            android:src="@drawable/smiley_happy"
-            android:layout_centerInParent="true"
-            android:layout_height="wrap_content" />
-    <FrameLayout
+    <me.kaelaela.verticalviewpager.VerticalViewPager
+        android:id="@+id/mViewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-        <ImageButton
-            android:contentDescription="@string/description_bp_add_comm"
-            android:id="@+id/add_comm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_note_add_black"
-            android:background="@drawable/ic_note_add_black"
-            android:layout_gravity="bottom|start"
-            android:layout_margin="10dp"/>
-        <ImageButton
-            android:contentDescription="@string/description_bp_historic"
-            android:id="@+id/history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_history_black"
-            android:background="@drawable/ic_history_black"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"/>
-    </FrameLayout>
+        android:layout_height="match_parent">
+
+    </me.kaelaela.verticalviewpager.VerticalViewPager>
+
 
 </RelativeLayout>

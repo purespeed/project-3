@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/screen"
+    tools:context="com.francois.patrick.projet.controller.MainActivity"
+    android:background="@color/light_sage"
+    android:orientation="vertical"
+    android:gravity="center">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:contentDescription="@string/description_smiley"
+        android:id="@+id/smiley"
+        android:layout_width="wrap_content"
+        android:src="@drawable/smiley_happy"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <ImageButton
+            android:contentDescription="@string/description_bp_add_comm"
+            android:id="@+id/add_comm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_note_add_black"
+            android:background="@drawable/ic_note_add_black"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="10dp"/>
+        <ImageButton
+            android:contentDescription="@string/description_bp_historic"
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_history_black"
+            android:background="@drawable/ic_history_black"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"/>
+    </FrameLayout>
+
+</RelativeLayout>

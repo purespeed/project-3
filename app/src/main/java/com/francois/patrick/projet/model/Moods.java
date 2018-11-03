@@ -7,13 +7,18 @@ import java.io.Serializable;
  */
 public class Moods implements Serializable {
 
-    public final int mId;
+    private int mId;
     private int mMood;
     private String mCommentary;
 
     /* These is for parameter the Mood Object with his mood and commentary */
-    public Moods(int id, int mood, String commentary) {
+
+    public Moods(int id,int mood, String commentary) {
         this.mId = id;
+        this.mMood = mood;
+        this.mCommentary = commentary;
+    }
+    public Moods(int mood, String commentary) {
         this.mMood = mood;
         this.mCommentary = commentary;
     }

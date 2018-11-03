@@ -1,10 +1,13 @@
 package com.francois.patrick.projet.controller;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -14,6 +17,14 @@ import android.widget.Toast;
 
 import com.francois.patrick.projet.R;
 import com.francois.patrick.projet.model.MoodList;
+import com.francois.patrick.projet.model.Moods;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class List_Historic extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +34,25 @@ public class List_Historic extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list__historic);
+
+        List <Moods> test = new ArrayList<>();
+
+        test.add(new Moods(0,"crotte"));
+        test.add(new Moods(1,"zut"));
+        test.add(new Moods(2,"flute"));
+        test.add(new Moods(3,""));
+
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+
+        String jsonString = gson.toJson(test);
+        Log.i("Json",jsonString);
+
+        Type litType = new TypeToken<ArrayList<Moods>>(){}.getType();
+        List <Moods> newlists = gson.fromJson(jsonString, litType);
+        Log.i("size", String.valueOf(newlists.size()));
+
 
 
         /* Add commentary to array */

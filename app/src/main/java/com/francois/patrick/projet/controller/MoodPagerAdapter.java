@@ -2,15 +2,16 @@ package com.francois.patrick.projet.controller;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 /**
  * Created by Patrick Francois on 29/10/2018.
  */
-public class FragmentPagerAdapter extends FragmentPagerAdapter {
+public class MoodPagerAdapter extends FragmentPagerAdapter {
 
     private static int NUM_ITEMS = 3;
 
-    public FragmentPagerAdapter(FragmentManager fragmentManager) {
+    public MoodPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
     }
 
@@ -25,11 +26,7 @@ public class FragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0: // Fragment # 0 - This will show FirstFragment
-                return FirstFragment.newInstance(0, "Page # 1");
-            case 1: // Fragment # 0 - This will show FirstFragment different title
-                return FirstFragment.newInstance(1, "Page # 2");
-            case 2: // Fragment # 1 - This will show SecondFragment
-                return SecondFragment.newInstance(2, "Page # 3");
+                return MoodFragment.newInstance(MainActivity.screen.get(0),MainActivity.smiley.get(0));
             default:
                 return null;
         }
