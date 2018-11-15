@@ -3,38 +3,51 @@ package com.francois.patrick.projet.controller;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Patrick Francois on 29/10/2018.
  */
 public class MoodPagerAdapter extends FragmentPagerAdapter {
 
-    private static int NUM_ITEMS = 3;
+    private static int NUM_ITEMS = 5;
 
-    public MoodPagerAdapter(FragmentManager fragmentManager) {
+    private List<Fragment> fragments = new ArrayList<>();
+
+    public MoodPagerAdapter(FragmentManager fragmentManager,  List<Fragment> fragments) {
         super(fragmentManager);
-    }
 
-    // Returns total number of pages
-    @Override
-    public int getCount() {
-        return NUM_ITEMS;
+        this.fragments = fragments;
     }
-
-    // Returns the fragment to display for that page
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0: // Fragment # 0 - This will show FirstFragment
-                return MoodFragment.newInstance(MainActivity.screen.get(0),MainActivity.smiley.get(0));
-            default:
-                return null;
-        }
+        return fragments.get(position);
     }
 
-    // Returns the page title for the top indicator
     @Override
-    public CharSequence getPageTitle(int position) {
-        return "Page " + position;
+    public int getCount() {
+        return fragments.size();
+    }
+
+    public static class Holder {
+
+        private final List<Fragment> fragments = new ArrayList<>();
+        private FragmentManager manager;
+
+        public Holder(FragmentManager manager) {
+            this.manager = manager;
+        }
+
+        public Holder add(Fragment f) {
+            fragments.add(f);
+            return this;
+        }
+
+        public MoodPagerAdapter set() {
+            return new MoodPagerAdapter(manager, fragments);
+        }
     }
 }

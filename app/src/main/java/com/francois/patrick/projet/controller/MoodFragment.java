@@ -1,7 +1,9 @@
 package com.francois.patrick.projet.controller;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -22,17 +24,19 @@ import com.francois.patrick.projet.R;
  */
 public class MoodFragment extends Fragment {
 
-    private static int mSmiley;
-    private static int mColor;
     private ImageButton mAddComm;
     private ImageButton mHistoric;
     private String mComm;
 
     public static MoodFragment newInstance (int color,int smiley){
-        MoodFragment moodFragment = new MoodFragment();
-        mSmiley = smiley;
-        mColor = color;
-        return moodFragment;
+
+        Bundle args = new Bundle();
+        args.putInt("color", color);
+        args.putInt("smiley", smiley);
+        MoodFragment fragment = new MoodFragment();
+        fragment.setArguments(args);
+        return fragment;
+
     }
 
     @Override
@@ -42,9 +46,9 @@ public class MoodFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.mood, container, false);
         ImageView smiley = v.findViewById(R.id.smiley);
-        smiley.setImageDrawable(getResources().getDrawable(mSmiley));
+        smiley.setImageDrawable(getResources().getDrawable(getArguments().getInt("smiley")));
         RelativeLayout screen = v.findViewById(R.id.screen);
-        screen.setBackgroundColor(getResources().getColor(mColor));
+        screen.setBackgroundColor(getResources().getColor(getArguments().getInt("color")));
 
         mAddComm = v.findViewById(R.id.add_comm);
         mHistoric = v.findViewById(R.id.history);
@@ -54,13 +58,17 @@ public class MoodFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 final EditText mInputComm = new EditText(getActivity());
-                final AlertDialog.Builder mDialogAddComm = new AlertDialog.Builder(getActivity()).setMessage("Commentaries").setView(mInputComm).setPositiveButton("Valider", new DialogInterface.OnClickListener() {
+                final AlertDialog.Builder mDialogAddComm = new AlertDialog.Builder(getActivity()).setMessage("Comment").setView(mInputComm).setPositiveButton("Valid", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mComm = mInputComm.getText().toString();
+                        SharedPreferences sharedPref = getActivity ().getSharedPreferences("today",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit ();
+                        editor.putString ("Comment",mComm);
+                        editor.commit ();
                     }
                 });
-                mDialogAddComm.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                mDialogAddComm.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
