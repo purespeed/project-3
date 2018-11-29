@@ -1,8 +1,6 @@
 package com.francois.patrick.projet.controller;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.francois.patrick.projet.R;
 import com.francois.patrick.projet.model.MoodList;
@@ -26,7 +23,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class List_Historic extends AppCompatActivity implements View.OnClickListener {
+public class ListHistoricActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String tComms [] = {null, null, null, null, null, null, null};
 
@@ -111,7 +108,7 @@ public class List_Historic extends AppCompatActivity implements View.OnClickList
             }
             else{
                 mHistoricMoods.setVisibility(View.INVISIBLE);
-                mHistoricMoods.setBackgroundColor(ContextCompat.getColor(this, MainActivity.screen.get(tMoods[i])));
+                mHistoricMoods.setBackgroundColor(ContextCompat.getColor(this, MoodPagerAdapter.screen.get(tMoods[i])));
                 mRatio = ((float) (width))*tRatioWidth[tMoods[i]-1];
                 mHistoricMoods.getLayoutParams().width = (int) mRatio;
             }

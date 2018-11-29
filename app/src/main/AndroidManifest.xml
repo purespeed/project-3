@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.List_Historic"></activity>
+        <activity android:name=".controller.ListHistoricActivity"></activity>
         <receiver android:name=".controller.AlarmReceiver" android:enabled="true"/>
     </application>
 

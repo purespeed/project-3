@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -24,8 +22,6 @@ import com.francois.patrick.projet.R;
  */
 public class MoodFragment extends Fragment {
 
-    private ImageButton mAddComm;
-    private ImageButton mHistoric;
     private String mComm;
 
     public static MoodFragment newInstance (int color,int smiley){
@@ -50,8 +46,8 @@ public class MoodFragment extends Fragment {
         RelativeLayout screen = v.findViewById(R.id.screen);
         screen.setBackgroundColor(getResources().getColor(getArguments().getInt("color")));
 
-        mAddComm = v.findViewById(R.id.add_comm);
-        mHistoric = v.findViewById(R.id.history);
+        ImageButton mAddComm = v.findViewById(R.id.add_comm);
+        ImageButton mHistoric = v.findViewById(R.id.history);
 
         /* Add listener on ImageButton mAddComm for open pop up with EditBox for input commentary */
         mAddComm.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +78,7 @@ public class MoodFragment extends Fragment {
         mHistoric.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(getActivity(), List_Historic.class);
+                Intent mIntent = new Intent(getActivity(), ListHistoricActivity.class);
                 startActivity(mIntent);
             }
         });

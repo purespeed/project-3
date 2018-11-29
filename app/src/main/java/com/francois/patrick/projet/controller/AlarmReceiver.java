@@ -21,13 +21,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         Log.i("comment",comment);
         Log.i("mood",String.valueOf(mood));
 
-        /*SharedPreferences sharedPref = context.getSharedPreferences("Moods",Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("Moods", jsonString);
-        editor.commit();
+        editor.putString("Moods", String.valueOf(mood));
+        editor.apply();
 
-        String listMoods = sharedPref.getString("Moods", "");*/
 
     }
 
